@@ -7,7 +7,7 @@
   ],
   "build": {
     "env": {
-      "VITE_API_URL": "https://khannetra-api.onrender.com/api/v1"
+      "VITE_API_URL": https://khan-netra-5g49.onrender.com/api/v1
     }
   }
 }
