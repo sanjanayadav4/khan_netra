@@ -1,0 +1,37 @@
+{
+  "name": "KhanNetra DGMS",
+  "short_name": "KhanNetra",
+  "description": "AI-Based Smart Governance and Compliance Monitoring System for Coal Mines — DGMS, Ministry of Coal, Govt. of India",
+  "start_url": "/field",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#060e1c",
+  "theme_color": "#f59e0b",
+  "categories": ["government", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Report Incident",
+      "url": "/incidents",
+      "description": "Quick incident report"
+    },
+    {
+      "name": "Field Report",
+      "url": "/field-reports",
+      "description": "Submit a field observation"
+    },
+    {
+      "name": "Attendance",
+      "url": "/attendance",
+      "description": "Mark worker attendance"
+    }
+  ]
+}

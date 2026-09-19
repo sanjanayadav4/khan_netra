@@ -1,0 +1,301 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" width="400" height="400">
+  <defs>
+    <!-- Gold gradient – primary accent -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFD700"/>
+      <stop offset="45%"  stop-color="#F5A623"/>
+      <stop offset="100%" stop-color="#C87800"/>
+    </linearGradient>
+    <!-- Deep gold for inner accent -->
+    <linearGradient id="goldInner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#FFE066"/>
+      <stop offset="100%" stop-color="#D4860A"/>
+    </linearGradient>
+    <!-- Steel-blue gradient -->
+    <linearGradient id="steelBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#3A6EA5"/>
+      <stop offset="100%" stop-color="#1A3A5C"/>
+    </linearGradient>
+    <!-- Shield body gradient -->
+    <linearGradient id="shieldBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#1C2E48"/>
+      <stop offset="50%"  stop-color="#0D1E33"/>
+      <stop offset="100%" stop-color="#060E1C"/>
+    </linearGradient>
+    <!-- Tunnel depth gradient -->
+    <radialGradient id="tunnelDepth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#0A1628" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#040C18" stop-opacity="1"/>
+    </radialGradient>
+    <!-- Headlamp glow -->
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFFDE0" stop-opacity="1"/>
+      <stop offset="40%"  stop-color="#FFD700" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+    <!-- AI node glow -->
+    <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#60C8FF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#1A7EC8" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Outer ring gradient -->
+    <linearGradient id="outerRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFD700"/>
+      <stop offset="30%"  stop-color="#C87800"/>
+      <stop offset="60%"  stop-color="#FFD700"/>
+      <stop offset="100%" stop-color="#A86000"/>
+    </linearGradient>
+    <!-- Mountain gradient -->
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#2A4A6A"/>
+      <stop offset="100%" stop-color="#0D1E33"/>
+    </linearGradient>
+    <!-- Glow filter for headlamp -->
+    <filter id="glowLamp" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Subtle drop shadow for emblem -->
+    <filter id="emblemShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <!-- AI pulse glow -->
+    <filter id="aiPulse" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════
+       OUTER DECORATIVE RING (gold tick marks)
+  ═══════════════════════════════════════════ -->
+  <circle cx="200" cy="200" r="185" stroke="url(#outerRing)" stroke-width="2.5" stroke-dasharray="4 7.2" fill="none" opacity="0.55"/>
+  <circle cx="200" cy="200" r="177" stroke="#FFD700" stroke-width="0.8" fill="none" opacity="0.2"/>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN SHIELD BODY
+  ═══════════════════════════════════════════ -->
+  <!-- Shield outer border (gold) -->
+  <path d="M200 28 L340 82 L340 210 Q340 295 200 368 Q60 295 60 210 L60 82 Z"
+        fill="url(#outerRing)" filter="url(#emblemShadow)"/>
+  <!-- Shield inner fill -->
+  <path d="M200 40 L328 89 L328 210 Q328 286 200 352 Q72 286 72 210 L72 89 Z"
+        fill="url(#shieldBody)"/>
+  <!-- Shield inner rim highlight -->
+  <path d="M200 52 L316 97 L316 210 Q316 278 200 336 Q84 278 84 210 L84 97 Z"
+        fill="none" stroke="#2A4A6A" stroke-width="1.5"/>
+
+  <!-- ═══════════════════════════════════════════
+       MOUNTAIN / TERRAIN SILHOUETTE (background)
+  ═══════════════════════════════════════════ -->
+  <path d="M84 255 L120 195 L148 225 L178 168 L200 188 L222 168 L252 225 L280 195 L316 255 Z"
+        fill="url(#mountainGrad)" opacity="0.45"/>
+  <!-- Mine entrance arch on mountain -->
+  <path d="M174 255 Q174 230 200 228 Q226 230 226 255 Z"
+        fill="#040C18" opacity="0.9"/>
+
+  <!-- ═══════════════════════════════════════════
+       MINE TUNNEL ARCH — central structure
+  ═══════════════════════════════════════════ -->
+  <!-- Tunnel outer arch stone frame -->
+  <path d="M148 280 L148 230 Q148 185 200 183 Q252 185 252 230 L252 280 Z"
+        fill="#1A2E48"/>
+  <!-- Tunnel arch border (gold) -->
+  <path d="M148 280 L148 230 Q148 183 200 181 Q252 183 252 230 L252 280"
+        fill="none" stroke="url(#gold)" stroke-width="3"/>
+  <!-- Tunnel depth interior -->
+  <ellipse cx="200" cy="232" rx="46" ry="47" fill="url(#tunnelDepth)"/>
+  <!-- Tunnel inner arch lines (perspective rails) -->
+  <line x1="200" y1="280" x2="200" y2="215" stroke="#1A3A5C" stroke-width="1" opacity="0.6"/>
+  <line x1="175" y1="275" x2="185" y2="220" stroke="#1A3A5C" stroke-width="0.8" opacity="0.5"/>
+  <line x1="225" y1="275" x2="215" y2="220" stroke="#1A3A5C" stroke-width="0.8" opacity="0.5"/>
+  <!-- Tunnel floor line -->
+  <line x1="152" y1="280" x2="248" y2="280" stroke="url(#gold)" stroke-width="1.5" opacity="0.7"/>
+  <!-- Tunnel arch support stones -->
+  <rect x="148" y="245" width="8" height="35" rx="1" fill="#2A4A6A" opacity="0.8"/>
+  <rect x="244" y="245" width="8" height="35" rx="1" fill="#2A4A6A" opacity="0.8"/>
+
+  <!-- ═══════════════════════════════════════════
+       MINER FIGURE — standing in tunnel arch
+  ═══════════════════════════════════════════ -->
+  <!-- Miner body / torso (safety vest shape) -->
+  <path d="M185 262 Q183 250 186 242 L200 238 L214 242 Q217 250 215 262 Z"
+        fill="#2A5A8A"/>
+  <!-- Safety vest bright stripe -->
+  <path d="M186 255 L214 255 L213 260 L187 260 Z" fill="#FFD700" opacity="0.85"/>
+  <!-- Arms -->
+  <path d="M186 248 Q180 252 178 260 L183 261 Q184 255 188 252 Z" fill="#1E3A5A"/>
+  <path d="M214 248 Q220 252 222 260 L217 261 Q216 255 212 252 Z" fill="#1E3A5A"/>
+  <!-- Legs -->
+  <rect x="191" y="262" width="7" height="18" rx="2" fill="#1A3050"/>
+  <rect x="202" y="262" width="7" height="18" rx="2" fill="#1A3050"/>
+  <!-- Boots -->
+  <path d="M189 278 L191 280 L200 280 L200 278 Z" fill="#0D1628"/>
+  <path d="M200 278 L200 280 L209 280 L211 278 Z" fill="#0D1628"/>
+
+  <!-- ═══════════════════════════════════════════
+       SAFETY HELMET
+  ═══════════════════════════════════════════ -->
+  <!-- Helmet dome -->
+  <path d="M186 237 Q185 224 200 221 Q215 224 214 237 Z"
+        fill="url(#steelBlue)"/>
+  <!-- Helmet top highlight -->
+  <path d="M193 224 Q200 221 207 224 Q203 222 200 222 Q197 222 193 224 Z"
+        fill="#5A8AC0" opacity="0.7"/>
+  <!-- Helmet brim -->
+  <rect x="183" y="236" width="34" height="4" rx="2" fill="#1A3A60"/>
+  <!-- Helmet brim highlight -->
+  <rect x="183" y="236" width="34" height="1.5" rx="1" fill="#4A7AAA" opacity="0.6"/>
+  <!-- Helmet chin strap suggestion -->
+  <path d="M185 239 Q184 243 186 244 L187 243 Q185 241 186 239 Z" fill="#0D2040" opacity="0.6"/>
+  <path d="M215 239 Q216 243 214 244 L213 243 Q215 241 214 239 Z" fill="#0D2040" opacity="0.6"/>
+
+  <!-- ═══════════════════════════════════════════
+       HEADLAMP — mounted on helmet
+  ═══════════════════════════════════════════ -->
+  <!-- Lamp housing -->
+  <circle cx="200" cy="229" r="5" fill="#FFD700"/>
+  <circle cx="200" cy="229" r="3.5" fill="#FFFDE0"/>
+  <!-- Lamp lens inner -->
+  <circle cx="200" cy="229" r="2" fill="white"/>
+  <!-- Headlamp glow rays -->
+  <g filter="url(#glowLamp)" opacity="0.75">
+    <path d="M200 224 L192 198 L208 198 Z" fill="url(#lampGlow)" opacity="0.5"/>
+    <path d="M195 225 L180 204 L194 200 Z" fill="url(#lampGlow)" opacity="0.3"/>
+    <path d="M205 225 L220 204 L206 200 Z" fill="url(#lampGlow)" opacity="0.3"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════
+       FACE / VISOR
+  ═══════════════════════════════════════════ -->
+  <!-- Face oval -->
+  <ellipse cx="200" cy="241" rx="8" ry="6" fill="#D4956A"/>
+  <!-- Visor / safety goggles bar -->
+  <rect x="193" y="238" width="14" height="4" rx="2" fill="#1A4A80" opacity="0.8"/>
+  <!-- Goggles reflection -->
+  <rect x="194" y="238.5" width="5" height="1.5" rx="0.5" fill="#60A8E0" opacity="0.5"/>
+  <rect x="201" y="238.5" width="5" height="1.5" rx="0.5" fill="#60A8E0" opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════════
+       AI / MONITORING CIRCUIT NODES
+  ═══════════════════════════════════════════ -->
+  <!-- Left upper node -->
+  <circle cx="118" cy="130" r="5" fill="#1A3A60" stroke="#60C8FF" stroke-width="1.5"/>
+  <circle cx="118" cy="130" r="2.5" fill="#60C8FF" filter="url(#aiPulse)"/>
+  <!-- Right upper node -->
+  <circle cx="282" cy="130" r="5" fill="#1A3A60" stroke="#60C8FF" stroke-width="1.5"/>
+  <circle cx="282" cy="130" r="2.5" fill="#60C8FF" filter="url(#aiPulse)"/>
+  <!-- Top center node -->
+  <circle cx="200" cy="100" r="5" fill="#1A3A60" stroke="#60C8FF" stroke-width="1.5"/>
+  <circle cx="200" cy="100" r="2.5" fill="#60C8FF" filter="url(#aiPulse)"/>
+  <!-- Left lower node -->
+  <circle cx="108" cy="218" r="4" fill="#1A3A60" stroke="#3A8AC0" stroke-width="1.2"/>
+  <circle cx="108" cy="218" r="2" fill="#3A8AC0"/>
+  <!-- Right lower node -->
+  <circle cx="292" cy="218" r="4" fill="#1A3A60" stroke="#3A8AC0" stroke-width="1.2"/>
+  <circle cx="292" cy="218" r="2" fill="#3A8AC0"/>
+
+  <!-- Circuit lines connecting nodes -->
+  <line x1="118" y1="130" x2="148" y2="180" stroke="#2A5A8A" stroke-width="1" opacity="0.6" stroke-dasharray="3 3"/>
+  <line x1="282" y1="130" x2="252" y2="180" stroke="#2A5A8A" stroke-width="1" opacity="0.6" stroke-dasharray="3 3"/>
+  <line x1="200" y1="100" x2="200" y2="180" stroke="#2A5A8A" stroke-width="1" opacity="0.5" stroke-dasharray="3 3"/>
+  <line x1="118" y1="130" x2="200" y2="100" stroke="#2A5A8A" stroke-width="0.8" opacity="0.4" stroke-dasharray="2 4"/>
+  <line x1="282" y1="130" x2="200" y2="100" stroke="#2A5A8A" stroke-width="0.8" opacity="0.4" stroke-dasharray="2 4"/>
+  <line x1="108" y1="218" x2="148" y2="230" stroke="#1A4A6A" stroke-width="0.8" opacity="0.5" stroke-dasharray="2 4"/>
+  <line x1="292" y1="218" x2="252" y2="230" stroke="#1A4A6A" stroke-width="0.8" opacity="0.5" stroke-dasharray="2 4"/>
+
+  <!-- ═══════════════════════════════════════════
+       RADAR / SATELLITE WAVES (top arc)
+  ═══════════════════════════════════════════ -->
+  <!-- Wave 1 — innermost -->
+  <path d="M170 98 Q200 80 230 98" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <!-- Wave 2 -->
+  <path d="M155 88 Q200 62 245 88" fill="none" stroke="#FFD700" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <!-- Wave 3 — outermost -->
+  <path d="M140 78 Q200 44 260 78" fill="none" stroke="#FFD700" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+  <!-- Center transmit dot -->
+  <circle cx="200" cy="100" r="3.5" fill="#FFD700" filter="url(#aiPulse)"/>
+  <!-- Satellite dish suggestion -->
+  <path d="M196 104 L198 114 L202 114 L204 104 Q200 101 196 104 Z" fill="#2A5A8A" opacity="0.7"/>
+
+  <!-- ═══════════════════════════════════════════
+       PICKAXE TOOLS — crossed behind miner
+  ═══════════════════════════════════════════ -->
+  <!-- Left pickaxe handle -->
+  <line x1="160" y1="285" x2="190" y2="258" stroke="#2A4A6A" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left pickaxe head -->
+  <path d="M157 282 Q155 276 160 273 L163 277 Q162 280 157 282 Z" fill="url(#goldInner)"/>
+  <path d="M157 282 Q159 288 165 286 L163 282 Q160 283 157 282 Z" fill="#C87800"/>
+  <!-- Right pickaxe handle -->
+  <line x1="240" y1="285" x2="210" y2="258" stroke="#2A4A6A" stroke-width="3" stroke-linecap="round"/>
+  <!-- Right pickaxe head -->
+  <path d="M243 282 Q245 276 240 273 L237 277 Q238 280 243 282 Z" fill="url(#goldInner)"/>
+  <path d="M243 282 Q241 288 235 286 L237 282 Q240 283 243 282 Z" fill="#C87800"/>
+
+  <!-- ═══════════════════════════════════════════
+       SHIELD BOTTOM POINT ACCENT
+  ═══════════════════════════════════════════ -->
+  <!-- Bottom shield point decorative gem -->
+  <path d="M193 350 L200 368 L207 350 L200 345 Z" fill="url(#gold)"/>
+  <path d="M196 350 L200 358 L204 350 L200 347 Z" fill="#FFFDE0" opacity="0.6"/>
+
+  <!-- ═══════════════════════════════════════════
+       SHIELD SIDE WING ACCENTS (gold filigree)
+  ═══════════════════════════════════════════ -->
+  <!-- Left wing accent -->
+  <path d="M72 165 Q60 175 64 190 Q68 185 74 183 Q70 175 72 165 Z" fill="url(#gold)" opacity="0.7"/>
+  <path d="M72 210 Q62 220 66 235 Q70 230 75 228 Q72 220 72 210 Z" fill="url(#gold)" opacity="0.5"/>
+  <!-- Right wing accent -->
+  <path d="M328 165 Q340 175 336 190 Q332 185 326 183 Q330 175 328 165 Z" fill="url(#gold)" opacity="0.7"/>
+  <path d="M328 210 Q338 220 334 235 Q330 230 325 228 Q328 220 328 210 Z" fill="url(#gold)" opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════════
+       CROWN / TOP DECORATION (authority marker)
+  ═══════════════════════════════════════════ -->
+  <!-- Crown base bar -->
+  <rect x="174" y="42" width="52" height="7" rx="3.5" fill="url(#gold)"/>
+  <!-- Crown points -->
+  <path d="M174 49 L174 42 L182 49 Z" fill="url(#gold)"/>
+  <path d="M200 35 L196 42 L204 42 Z" fill="url(#gold)"/>
+  <path d="M226 49 L226 42 L218 49 Z" fill="url(#gold)"/>
+  <!-- Crown center gem -->
+  <circle cx="200" cy="39" r="3.5" fill="#FFFDE0"/>
+  <circle cx="200" cy="39" r="2" fill="#FFD700"/>
+  <!-- Crown side gems -->
+  <circle cx="178" cy="46" r="2" fill="#FFD700" opacity="0.8"/>
+  <circle cx="222" cy="46" r="2" fill="#FFD700" opacity="0.8"/>
+
+  <!-- ═══════════════════════════════════════════
+       INNER DECORATIVE BORDER (gold thin line)
+  ═══════════════════════════════════════════ -->
+  <path d="M200 60 L310 103 L310 210 Q310 280 200 340 Q90 280 90 210 L90 103 Z"
+        fill="none" stroke="#FFD700" stroke-width="0.8" opacity="0.25"/>
+
+  <!-- ═══════════════════════════════════════════
+       MINE CART SILHOUETTE (bottom right corner)
+  ═══════════════════════════════════════════ -->
+  <rect x="228" y="263" width="26" height="14" rx="2" fill="#1A3A60" opacity="0.7"/>
+  <path d="M230 263 L232 256 L250 256 L252 263 Z" fill="#1A3050" opacity="0.7"/>
+  <circle cx="233" cy="278" r="3.5" fill="#2A4A70" stroke="#3A6A9A" stroke-width="1"/>
+  <circle cx="247" cy="278" r="3.5" fill="#2A4A70" stroke="#3A6A9A" stroke-width="1"/>
+  <circle cx="233" cy="278" r="1.5" fill="#4A7AAA"/>
+  <circle cx="247" cy="278" r="1.5" fill="#4A7AAA"/>
+  <!-- Cart track lines -->
+  <line x1="225" y1="282" x2="258" y2="282" stroke="#1A3A60" stroke-width="1.5" opacity="0.6"/>
+  <line x1="229" y1="280" x2="229" y2="284" stroke="#1A3A60" stroke-width="1" opacity="0.5"/>
+  <line x1="235" y1="280" x2="235" y2="284" stroke="#1A3A60" stroke-width="1" opacity="0.5"/>
+  <line x1="241" y1="280" x2="241" y2="284" stroke="#1A3A60" stroke-width="1" opacity="0.5"/>
+  <line x1="247" y1="280" x2="247" y2="284" stroke="#1A3A60" stroke-width="1" opacity="0.5"/>
+  <line x1="253" y1="280" x2="253" y2="284" stroke="#1A3A60" stroke-width="1" opacity="0.5"/>
+
+  <!-- ═══════════════════════════════════════════
+       EYE OF SURVEILLANCE (AI monitoring center)
+  ═══════════════════════════════════════════ -->
+  <!-- Placed inside tunnel above miner — subtle -->
+  <ellipse cx="200" cy="200" rx="14" ry="8" fill="none" stroke="#3A7AC0" stroke-width="1" opacity="0.5"/>
+  <circle cx="200" cy="200" r="5" fill="#0A1628" stroke="#3A8AC0" stroke-width="1" opacity="0.6"/>
+  <circle cx="200" cy="200" r="2.5" fill="#1A5A9A" opacity="0.7"/>
+  <circle cx="200" cy="200" r="1" fill="#60C8FF" opacity="0.9" filter="url(#aiPulse)"/>
+  <!-- Eye iris highlight -->
+  <circle cx="198" cy="199" r="0.8" fill="white" opacity="0.4"/>
+</svg>

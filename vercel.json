@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "npm --prefix client install && npm --prefix client run build",
+  "outputDirectory": "client/dist",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "build": {
+    "env": {
+      "VITE_API_URL": "https://khannetra-api.onrender.com/api/v1"
+    }
+  }
+}

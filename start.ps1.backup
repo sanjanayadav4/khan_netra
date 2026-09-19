@@ -1,0 +1,56 @@
+# KhanNetra DGMS — One-Click Start
+# Run this from the project root: .\start.ps1
+$ROOT = $PSScriptRoot
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+Write-Host "  KhanNetra DGMS — Starting..." -ForegroundColor Cyan
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Cyan
+
+# Run any pending database migrations (idempotent — safe to run every time)
+Write-Host "⏳ Running database migrations..." -ForegroundColor Yellow
+$migrations = @(
+  "migrate_inspection.js",
+  "migrate_attendance.js",
+  "migrate_mine_plans.js",
+  "migrate_workers.js"
+)
+foreach ($m in $migrations) {
+  $p = Join-Path "$ROOT\server" $m
+  if (Test-Path $p) {
+    $result = & node $p 2>&1
+    Write-Host "   ${m}: OK" -ForegroundColor Green
+  }
+}
+
+# Start backend
+Write-Host "⏳ Starting backend (port 5000)..." -ForegroundColor Yellow
+Start-Process powershell -ArgumentList "-NoExit -Command `"Set-Location '$ROOT\server'; node src/index.js`"" -WindowStyle Normal
+Start-Sleep -Seconds 3
+
+# Start frontend
+Write-Host "⏳ Starting frontend (port 3000)..." -ForegroundColor Yellow
+Start-Process powershell -ArgumentList "-NoExit -Command `"Set-Location '$ROOT\client'; npm run dev`"" -WindowStyle Normal
+Start-Sleep -Seconds 4
+
+# Open browser
+Start-Process "http://localhost:3000"
+
+Write-Host ""
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Green
+Write-Host "  ✅ KhanNetra is running at http://localhost:3000" -ForegroundColor Green
+Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Green
+Write-Host ""
+Write-Host "  Demo Login Credentials:" -ForegroundColor Yellow
+Write-Host "  Admin:        admin@khannetra.gov.in / KhanNetra@2024"
+Write-Host "  Mine Manager: manager1@khannetra.gov.in / KhanNetra@2024"
+Write-Host "  Inspector:    inspector1@khannetra.gov.in / KhanNetra@2024"
+Write-Host ""
+Write-Host "  Key URLs:" -ForegroundColor Yellow
+Write-Host "  Dashboard:    http://localhost:3000/dashboard"
+Write-Host "  Mine Plans:   http://localhost:3000/mine-plans"
+Write-Host "  Field Hub:    http://localhost:3000/field"
+Write-Host "  Attendance:   http://localhost:3000/attendance"
+Write-Host "  Safety Vision:http://localhost:3000/vision"
+Write-Host "  AI Assistant: http://localhost:3000/ai/chat"
+Write-Host ""
+Write-Host "  API Base:     http://localhost:5000/api/v1" -ForegroundColor Cyan
+

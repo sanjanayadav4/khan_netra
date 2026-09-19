@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+# Keep khannetra.db in git so Render has seed data on first deploy
+# WAL/SHM are transient lock files — never commit them
+*.db-shm
+*.db-wal

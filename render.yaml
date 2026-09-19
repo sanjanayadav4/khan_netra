@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: khannetra-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node src/database/init.js && node src/index.js
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # ── Set these in the Render dashboard (never commit values) ──
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_URL
+        value: https://khannettra.vercel.app
+      - key: ALLOWED_ORIGINS
+        value: https://khannettra.vercel.app,https://khannetra.vercel.app
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: 587
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_FROM
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: MODEL_BACKEND
+        value: gemini
+      - key: REGISTER_RATE_LIMIT
+        value: 10
+      - key: RESEND_RATE_LIMIT
+        value: 5
+      - key: LOGIN_RATE_LIMIT
+        value: 20
